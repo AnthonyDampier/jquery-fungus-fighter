@@ -114,7 +114,7 @@ function fungusDamaged(damageHP){
         fungusHP -= damageHP;
     } else {
         fungusHP =0;
-        $('.enemy').remove('walk');
+        $('.enemy').remove('.walk');
     }
     console.log('Fungus hp is reduced to: ', fungusHP);
 }
