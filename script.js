@@ -21,8 +21,8 @@ function onReady() {
     $('.attack-btn.dragon-blade').on('click', dragonBlade);
     $('.attack-btn.star-fire').on('click', starFire);
 
-    setInterval(fungusHeals, 1000);
-    setInterval(recoverAP, 2000);
+    //setInterval(fungusHeals, 2000);
+    //setInterval(recoverAP, 2000);
 
     // - Updates state which is ->
     // - Rendered to the DOM
@@ -112,10 +112,7 @@ function fungusDamaged(damageHP){
     console.log('Fungus damage for: ', damageHP);
     if((fungusHP-damageHP) > 0){
         fungusHP -= damageHP;
-    } else {
-        fungusHP =0;
-        $('.enemy').remove('.walk');
-    }
+    } 
     console.log('Fungus hp is reduced to: ', fungusHP);
 }
 function playerAPCost(reduceAP){
@@ -123,20 +120,23 @@ function playerAPCost(reduceAP){
     console.log('Reduce AP by: ',reduceAP);
     playerAP -= reduceAP;
     console.log('Players new AP: ', playerAP);
-}
-
-function fungusHeals(){
-    if(fungusHP == 0){
-        console.log('Fungus is dead... cannot heal');
-    }else if ( fungusHP < 50){
-        fungusHP += 2;
+    if(playerAP <= 0 ){
+        console.log('Player Loses: 0 AP');
     }
-    render();
 }
 
-function playerAttacked(){
-    // playerHP = playerHP - HPdamage
-}
+// function fungusHeals(){
+//     if(fungusHP == 0){
+//         console.log('Fungus is dead... cannot heal');
+//     }else if ( fungusHP < 50){
+//         fungusHP += 2;
+//     }
+//     render();
+// }
+
+// function playerAttacked(){
+//     // playerHP = playerHP - HPdamage
+// }
 
 function checkAP(attackAPCost){
     if (attackAPCost > playerAP){
@@ -148,11 +148,11 @@ function checkAP(attackAPCost){
     }
 }
 
-function recoverAP(){
-    if(playerAP < 50){
-        playerAP += 3;
-    }
-}
+// function recoverAP(){
+//     if(playerAP < 50){
+//         playerAP += 3;
+//     }
+// }
 
 function render(){
     console.group('Rendering:');
